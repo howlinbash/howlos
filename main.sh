@@ -26,6 +26,9 @@ mv dotfiles/* ~/
 rm -rf dotfiles
 cd ~
 
+# Remove url gh from gitconfig (will be added back later)
+tac .gitconfig | sed '1,2d' | tac > temp && mv temp .gitconfig
+
 # symlinks
 ln -s ~/.config/__assets__/wallpaper ~/Pictures/wallpaper
 

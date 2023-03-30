@@ -25,3 +25,6 @@ rm -rf dotfiles/.local
 mv dotfiles/* ~/
 rm -rf dotfiles
 cd ~
+
+# Remove url gh from gitconfig (will be added back later)
+tac .gitconfig | sed '1,2d' | tac > temp && mv temp .gitconfig
