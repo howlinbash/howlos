@@ -15,5 +15,5 @@ clone the repo
 
 run the script
 
-    cd Linux
+    cd linux
     ./main.sh
