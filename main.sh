@@ -9,11 +9,12 @@
 
 echo "Enter your root password:"
 read -s PASSWD
+echo "Enter your ssh passphrase:"
+read -s PHRASE
 
 mkdir -p src builds corkboard gits sandbox tmp Pictures/screenshots
 
 # Dotfiles
-cd src
 git clone https://github.com/howlinbash/dotfiles
 shopt -s dotglob
 mv -f dotfiles/.config/gtk-3.0/* ~/.config/gtk-3.0/
@@ -24,7 +25,6 @@ mv dotfiles/.local/* ~/.local/
 rm -rf dotfiles/.local
 mv dotfiles/* ~/
 rm -rf dotfiles
-cd ~
 
 # Remove url gh from gitconfig (will be added back later)
 tac .gitconfig | sed '1,2d' | tac > temp && mv temp .gitconfig
@@ -103,5 +103,3 @@ echo "$PASSWD" | sudo -S tee -a /etc/sudoers.d/00_prompt_once > /dev/null <<EOF
 Defaults !tty_tickets
 Defaults timestamp_timeout = -1
 EOF
-
-source ~/.bashrc
