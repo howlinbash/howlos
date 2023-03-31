@@ -4,14 +4,20 @@ Howlin Bash Linux Configurerer
 ==============================
 
 
-### Test
+### Install
 
-open mozilla
+open firefox
 
     git clone https://github.com/howlinbash/config
-    ./config/test.sh
+    ./config/install.sh
 
-### Checks
+Navigate to `about:config` in firefox.  
+Paste this value into the search bar
+
+    toolkit.legacyUserProfileCustomizations.stylesheets
+
+and set it to true
 
 open vim twice
-login to user and see if ranger icons worked
+
+log out and log back in to i3
