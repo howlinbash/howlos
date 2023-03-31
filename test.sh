@@ -72,8 +72,6 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_rogers -C rogers -P $PHRASE
 
 echo "$PASSWD" | sudo -S touch /etc/sudoers.d/00_prompt_once
 ls /etc/sudoers.d
-echo "$PASSWD" | sudo touch /etc/sudoers.d/00_prompt_once
-ls /etc/sudoers.d
 echo "$PASSWD" | sudo -S tee -a /etc/sudoers.d/00_prompt_once > /dev/null <<EOF
 
 ## Only ask for the password once for all TTYs per reboot.

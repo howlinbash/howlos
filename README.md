@@ -1,7 +1,17 @@
 
-open mozilla first to create .mozilla dir
-  check mozilla dir now exists
-  check mozilla dir now exists
-  check cd ~/.mozilla/firefox/*.default-release would work
-login to user and see if ranger icons worked
+
+Howlin Bash Linux Configurerer
+==============================
+
+
+### Test
+
+open mozilla
+
+    git clone https://github.com/howlinbash/config
+    ./config/test.sh
+
+### Checks
+
 open vim twice
+login to user and see if ranger icons worked
