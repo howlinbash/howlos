@@ -1,11 +1,8 @@
 #!/bin/bash
 
 # Add confirms and passphrase
-# make reporting infrastructure
 # nice colorful outputs
-# source vim and install plugins
 # ublock origin/devtools
-# dev-icons in ranger
 
 echo "Enter your root password:"
 read -s PASSWD
@@ -40,7 +37,6 @@ cd yay
 makepkg -sri
 cd
 
-
 echo "$PASSWD" | sudo -S pacman -Syu --noconfirm 
 echo "$PASSWD" | sudo -S yay -S --noconfirm $(cat .notes/pkglist.txt)
 
@@ -65,32 +61,6 @@ git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger
 cd ~/.mozilla/firefox/*.default-release
 rm -rf chrome 
 ln -s ~/.config/__assets__/firefox/chrome chrome
-mkdir -p extensions
-cd extensions
-curl -L https://addons.mozilla.org/firefox/downloads/file/4086892/ublock_origin-1.48.0.xpi > ublock_origin1.xpi
-curl -L https://addons.mozilla.org/firefox/downloads/file/4064595/privacy_badger17-2023.1.31.xpi > privacy_badger.xpi
-curl -L https://addons.mozilla.org/firefox/downloads/file/4040280/react_devtools-4.27.1.xpi > react_devtools.xpi
-curl -L https://addons.mozilla.org/firefox/downloads/file/4047244/reddit_enhancement_suite-5.22.15.xpi > reddit_enhancement_suite.xpi
-curl -L https://addons.mozilla.org/firefox/downloads/file/4079806/reduxdevtools-3.0.19.xpi > reduxdevtools.xpi
-
-# Chromium
-# cd ~/.config/chromium/Default
-# mkdir -p Extensions
-# cd Extensions
-# curl -L -o ublock-origin.crx "$(curl -sL "https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en" | jq -r '.[].url')"
-# ORIGIN_ID=$(unzip -qc ublock-origin.crx manifest.json | jq -r '.key')
-# mv ublock-origin.crx $ORIGIN_ID.crx
-# chmod 644 $ORIGIN_ID.crx
-# curl -L -o react.crx "$(curl -sL "https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en-GB" | jq -r '.[].url')"
-# REACT_ID=$(unzip -qc react.crx manifest.json | jq -r '.key')
-# mv react.crx $REACT_ID.crx
-# chmod 644 $REACT_ID.crx
-# curl -L -o redux.crx "$(curl -sL "https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-GB" | jq -r '.[].url')"
-# REDUX_ID=$(unzip -qc redux.crx manifest.json | jq -r '.key')
-# mv redux.crx $REDUX_ID.crx
-# chmod 644 $REDUX_ID.crx
-# git clone https://github.com/ken107/chromium-slinky-elegant-theme.git
-
 
 # ssh
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_rogers -C rogers -P $PHRASE
