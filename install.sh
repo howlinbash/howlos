@@ -217,3 +217,6 @@ EOF
 cat /etc/sudoers.d/00_prompt_once
 echo ""
 echo ""
+
+
+xclip -sel c ~/.ssh/id_rsa_rogers.pub
