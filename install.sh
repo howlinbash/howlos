@@ -194,6 +194,25 @@ echo ""
 echo ""
 
 
+prompt 'Firefox Add-ons'
+mkdir extensions
+cd extensions
+curl -L https://addons.mozilla.org/firefox/downloads/file/4086892/ublock_origin-1.48.0.xpi > ublock.xpi
+curl -L https://addons.mozilla.org/firefox/downloads/file/4064595/privacy_badger17-2023.1.31.xpi > badger.xpi
+curl -L https://addons.mozilla.org/firefox/downloads/file/4040280/react_devtools-4.27.1.xpi > react.xpi
+curl -L https://addons.mozilla.org/firefox/downloads/file/4047244/reddit_enhancement_suite-5.22.15.xpi > reddit.xpi
+curl -L https://addons.mozilla.org/firefox/downloads/file/4079806/reduxdevtools-3.0.19.xpi > redux.xpi
+firefox ublock.xpi
+firefox badger.xpi
+firefox react.xpi
+firefox reddit.xpi
+firefox redux.xpi
+cd
+rm -rf extensions
+echo ""
+echo ""
+
+
 prompt 'SSH'
 echo "$PASSWD" | sudo -S systemctl start sshd.service
 echo "$PASSWD" | sudo -S systemctl enable sshd.service
