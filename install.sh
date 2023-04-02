@@ -11,7 +11,7 @@ line() {
   echo -e "${GREEN}+${EDGE}+${NC}"
 }
 
-prompk() {
+heading() {
   MAX_LENGTH=33
   MESSAGE=$1
 
@@ -33,7 +33,6 @@ prompk() {
   echo -e " ${WARNING} ${NC}${LEFT}|  ${CYAN}${MESSAGE^^}${NC}  |${RIGHT}${GREEN} ${WARNING}"
   line
   echo -e "${NC}"
-  echo ""
 }
 
 get_password() {
@@ -60,16 +59,22 @@ get_passphrase() {
   fi
 }
 
+continue_prompt() {
+  echo ""
+  echo "Do you want to continue?"
+  read
+  echo ""
+}
 
-prompt 'Greetings Nerd'
+
+heading 'Greetings Nerd'
 get_password
 get_passphrase
 
 
-prompt 'Home Directories'
+heading 'Home Directories'
 mkdir -p src builds corkboard gits sandbox tmp Pictures/screenshots
 
-echo ""
 line
 echo "src:           $(basename src)"
 echo "builds:        $(basename builds)"
@@ -78,11 +83,10 @@ echo "gits:          $(basename gits)"
 echo "sandbox:       $(basename sandbox)"
 echo "tmp:           $(basename tmp)"
 echo "screenshots:   $(basename Pictures/screenshots)"
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'Dotfiles'
+heading 'Dotfiles'
 git clone https://github.com/howlinbash/dotfiles
 shopt -s dotglob
 mv -f dotfiles/.config/gtk-3.0/* ~/.config/gtk-3.0/
@@ -128,11 +132,11 @@ tac .gitconfig | sed '1,2d' | tac > temp && mv temp .gitconfig
 echo ""
 echo ".gitconfig:"
 cat .gitconfig
-echo ""
-echo ""
+line
+continue_prompt
 
 
-prompt 'Yay'
+heading 'Yay'
 # Make Yay pacman wrapper
 cd ~/builds
 curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz
@@ -140,18 +144,16 @@ tar -xvf yay.tar.gz
 cd yay
 makepkg -sri
 cd
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'Packages'
+heading 'Packages'
 echo "$PASSWD" | sudo -S pacman -Syu --noconfirm 
 echo "$PASSWD" | sudo -S yay -S --noconfirm $(cat .notes/pkglist.txt)
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'Inputrc'
+heading 'Inputrc'
 echo "$PASSWD" | sudo -S tee -a /etc/inputrc > /dev/null <<EOF
 
 # My input settings controls
@@ -162,39 +164,35 @@ set completion-ignore-case on
 EOF
 
 cat /etc/inputrc | tail
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'Keyboard Settings'
+heading 'Keyboard Settings'
 echo "$PASSWD" | sudo -S localectl set-x11-keymap us,fi pc105 "" grp:alt_shift_toggle,caps:swapescape > /dev/null
 echo "$PASSWD" | sudo -S sed -i 's/^KEYMAP.*/KEYMAP=us/' /etc/vconsole.conf > /dev/null
 echo "$PASSWD" | sudo -S sed -i 's/^XKBLAYOUT.*/XKBLAYOUT="us"/' /etc/defaults/keyboard  > /dev/null
 cat /etc/vconsole.conf
 echo ""
 cat /etc/default/keyboard
-echo ""
-echo ""
+continue_prompt
 
 
 mkdir -p ~/.config/ranger/plugins
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'Firefox'
+heading 'Firefox'
 cd ~/.mozilla/firefox/*.default-release
 rm -rf chrome 
 ln -s ~/.config/__assets__/firefox/chrome chrome
 echo "chrome:"
 ls chrome
 cd
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'Firefox Add-ons'
+heading 'Firefox Add-ons'
 mkdir extensions
 cd extensions
 curl -L https://addons.mozilla.org/firefox/downloads/file/4086892/ublock_origin-1.48.0.xpi > ublock.xpi
@@ -209,20 +207,18 @@ firefox reddit.xpi
 firefox redux.xpi
 cd
 rm -rf extensions
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'SSH'
+heading 'SSH'
 echo "$PASSWD" | sudo -S systemctl start sshd.service
 echo "$PASSWD" | sudo -S systemctl enable sshd.service
 echo "$PASSWD" | sudo -S systemctl status sshd.service
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_rogers -C rogers -P $PHRASE
-echo ""
-echo ""
+continue_prompt
 
 
-prompt 'Single Sudo'
+heading 'Single Sudo'
 echo "$PASSWD" | sudo -S touch /etc/sudoers.d/00_prompt_once
 ls /etc/sudoers.d
 echo "$PASSWD" | sudo -S tee -a /etc/sudoers.d/00_prompt_once > /dev/null <<EOF
@@ -234,8 +230,14 @@ Defaults !tty_tickets
 Defaults timestamp_timeout = -1
 EOF
 cat /etc/sudoers.d/00_prompt_once
-echo ""
-echo ""
-
+continue_prompt
 
 xclip -sel c ~/.ssh/id_rsa_rogers.pub
+
+heading 'NEXT'
+echo ""
+echo " - Add key to github"
+echo " - Open nvim 2 times"
+echo " - Run next.sh"
+echo ""
+echo ""
