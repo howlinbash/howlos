@@ -170,7 +170,7 @@ continue_prompt
 heading 'Keyboard Settings'
 echo "$PASSWD" | sudo -S localectl set-x11-keymap us,fi pc105 "" grp:alt_shift_toggle,caps:swapescape > /dev/null
 echo "$PASSWD" | sudo -S sed -i 's/^KEYMAP.*/KEYMAP=us/' /etc/vconsole.conf > /dev/null
-echo "$PASSWD" | sudo -S sed -i 's/^XKBLAYOUT.*/XKBLAYOUT="us"/' /etc/defaults/keyboard  > /dev/null
+echo "$PASSWD" | sudo -S sed -i 's/^XKBLAYOUT.*/XKBLAYOUT="us"/' /etc/default/keyboard  > /dev/null
 cat /etc/vconsole.conf
 echo ""
 cat /etc/default/keyboard
@@ -214,7 +214,7 @@ heading 'SSH'
 echo "$PASSWD" | sudo -S systemctl start sshd.service
 echo "$PASSWD" | sudo -S systemctl enable sshd.service
 echo "$PASSWD" | sudo -S systemctl status sshd.service
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_rogers -C rogers -P $PHRASE
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_git -C rogers -P $PHRASE
 continue_prompt
 
 
@@ -232,7 +232,7 @@ EOF
 cat /etc/sudoers.d/00_prompt_once
 continue_prompt
 
-xclip -sel c ~/.ssh/id_rsa_rogers.pub
+xclip -sel c ~/.ssh/id_rsa_git.pub
 
 heading 'NEXT'
 echo ""
