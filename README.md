@@ -1,15 +1,15 @@
 
 
-Howlin Bash Linux Configurerer
-==============================
+Howlos
+======
 
 
 ### Install
 
 open firefox
 
-    git clone https://github.com/howlinbash/config
-    ./config/install.sh
+    git clone https://github.com/howlinbash/howlos
+    ./howlos/install.sh
 
 Navigate to `about:config` in firefox.  
 Paste this value into the search bar
