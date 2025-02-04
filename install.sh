@@ -16,13 +16,16 @@ section symlinks 'Symlinks'
 section install_yay 'Yay' 'Did you get a yay version number'
 section install_pacs 'Install Packages'
 section setup_firefox 'Setup Firefox'
-section ranger_plugins 'Extend Ranger'
 section init_ssh 'Initialise SSH' 'Did you add it?'
 section auth_github 'Authenticate Github'
 section push_keys 'Commit new SSH keys'
+section node_ranger 'Install node and extend Ranger' 'Did you get a node version number'
 
 if [ "$MODE" == "w" ]; then
   section clone_repos 'Clone My Repos'
 fi
+
+passwd
+sudo passwd root
 
 heading "All Done"

@@ -83,7 +83,7 @@ dotfiles() {
   shopt -s dotglob
   mv dotfiles/.git ./
   git reset HEAD --hard
-  git checkout "$HOSTNAME" "origin/$HOSTNAME"
+  git checkout -b "$HOSTNAME" "origin/$HOSTNAME"
   rm -rf dotfiles
 }
 
@@ -173,11 +173,6 @@ setup_firefox() {
   rm -rf extensions
 }
 
-ranger_plugins() {
-  mkdir -p ~/.config/ranger/plugins
-  git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-}
-
 init_ssh() {
   sudo systemctl start sshd.service
   sudo systemctl enable sshd.service
@@ -227,6 +222,13 @@ push_keys() {
   echo "Pull new changes"
   git pull
   rm -rf fang dotfiles
+}
+
+node_ranger() {
+  mkdir -p ~/.config/ranger/plugins
+  git clone gh:alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+  nvm install --lts
+  node -v
 }
 
 clone_repos() {

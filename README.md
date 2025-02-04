@@ -3,6 +3,10 @@
 Howlos
 ======
 
+The beating heart of the Howlin Fleet, Howlos should be installed on any new
+machine and will be diligently maintained by the wonderful
+[Fang](https://github.com/howlinbash/fang) - a feisty little fella, but his
+bark is worse than his bite.
 
 ### Install
 
