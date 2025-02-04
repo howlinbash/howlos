@@ -234,6 +234,10 @@ node_ranger() {
 clone_repos() {
   git clone gh:howlinbash/todo-main .todo 
   git clone gh:howlinbash/todo .todo/bin
+  mkdir .config/nvim/lua/todo
+  cd .config/nvim/lua/todo
+  ln -s ~/.todo/bin/init.lua
+  cd
   git clone gh:howlinbash/grdocs greenroom
 
   cd src
