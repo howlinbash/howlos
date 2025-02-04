@@ -1,8 +1,8 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
 source ./lib.sh
 source ./tasks.sh
-
 cd
 
 heading 'Greetings Nerd'
