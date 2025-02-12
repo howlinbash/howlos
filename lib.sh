@@ -95,7 +95,7 @@ section() {
 }
 
 get_mode() {
-  if [ "$HOSTNAME" == "howlin" ] || [ "$HOSTNAME" == "bass" ]; then
+  if [ "$HOSTNAME" == "howlin" ] || [ "$HOSTNAME" == "bass" ] || [ "$HOSTNAME" == "wolf" ]; then
     MODE="w"
   elif [ "$HOSTNAME" == "the" ]; then
     MODE="s"

@@ -28,4 +28,13 @@ fi
 passwd
 sudo passwd root
 
-heading "All Done"
+heading "All Done (consider enabling backups/mounting dirs)"
+
+# Add function to run these commands next
+# - cargo
+# - ./backup/install
+
+# Setup docker
+# sudo systemctl enable --now docker
+# sudo usermod -aG docker $USER
+# logout login
