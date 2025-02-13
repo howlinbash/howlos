@@ -231,13 +231,12 @@ node_ranger() {
   node -v
 }
 
+setup_docker() {
+  sudo systemctl enable --now docker
+  sudo usermod -aG docker $USER
+}
+
 clone_repos() {
-  git clone gh:howlinbash/todo-main .todo 
-  git clone gh:howlinbash/todo .todo/bin
-  mkdir .config/nvim/lua/todo
-  cd .config/nvim/lua/todo
-  ln -s ~/.todo/bin/init.lua
-  cd
   git clone gh:howlinbash/grdocs greenroom
 
   cd src
@@ -260,4 +259,16 @@ clone_repos() {
   echo "todo-main:     $(basename .todo)"
   echo "todo:          $(basename .todo/bin)"
   echo "gr-docs:       $(basename greenroom)"
+}
+
+load_cargo() {
+  ./.local/bin/cargo
+}
+
+install_backup() {
+  ./../../mnt/shared/src/backup/install.sh
+}
+
+install_todo() {
+  ./../../mnt/shared/src/todo/install.sh
 }
