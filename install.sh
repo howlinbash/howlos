@@ -38,6 +38,7 @@ section install_backup 'Setup backup routines'
 
 if [ "$MODE" == "w" ]; then
   section install_todo 'Install Todo'
+  section install_ffsync 'Install Firefoxy Sync'
 fi
 
 passwd

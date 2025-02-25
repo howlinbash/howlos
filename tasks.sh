@@ -272,3 +272,7 @@ install_backup() {
 install_todo() {
   ./../../mnt/shared/src/todo/install.sh
 }
+
+install_ffsync() {
+  ./../../mnt/shared/src/ffsync/install.sh
+}
