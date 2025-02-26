@@ -248,16 +248,20 @@ clone_repos() {
   git clone gh:howlinbash/grd
   git clone gh:howlinbash/grlib
   git clone gh:howlinbash/gr-scripts
+  if [ "$HOSTNAME" == "howlin" ]; then
+    git clone gh:howlinbash/overlay
+  fi
   line
-  echo "ktv-scripts):  $(basename ktv-scripts)"
-  echo "ktv-server):   $(basename ktv-server)"
-  echo "ktv-web:       $(basename ktv-web)"
-  echo "greenroom:     $(basename greenroom)"
-  echo "grd:           $(basename grd)"
-  echo "grlib:         $(basename grlib)"
-  echo "gr-scripts:    $(basename gr-scripts)"
+  echo "ktv-scripts):  $(fullpath ktv-scripts)"
+  echo "ktv-server):   $(fullpath ktv-server)"
+  echo "ktv-web:       $(fullpath ktv-web)"
+  echo "greenroom:     $(fullpath greenroom)"
+  echo "grd:           $(fullpath grd)"
+  echo "grlib:         $(fullpath grlib)"
+  echo "gr-scripts:    $(fullpath gr-scripts)"
+  echo "overlay:       $(fullpath overlay)"
   cd
-  echo "gr-docs:       $(basename greenroom)"
+  echo "gr-docs:       $(fullpath greenroom)"
 }
 
 mount_cargo() {
