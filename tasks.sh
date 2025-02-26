@@ -70,7 +70,7 @@ EOF
 
   if [ "$MODE" == "w" ]; then
     echo 'Add shared dir to fstab'
-    sudo tee -a /etc/exports > /dev/null <<EOF
+    sudo tee -a /etc/fstab > /dev/null <<EOF
 the:/run/media/dells/elephant/shared /mnt/shared nfs defaults,nofail 0 0
 EOF
 
@@ -203,7 +203,7 @@ push_keys() {
   sed -i "/^$HOSTNAME\ /d" .ssh/known_hosts
   ssh-keyscan -t rsa,ecdsa,ed25519 $HOSTNAME >> .ssh/known_hosts
   sed -i "/^#\ $HOSTNAME/d" .ssh/known_hosts
-  cat .ssh/id_rsa_git.pub >> .ssh/authorized_keys
+  cat ~/.ssh/id_rsa_git.pub >> .ssh/authorized_keys
 
   echo ""
   echo "Auth Keys"
@@ -227,6 +227,7 @@ push_keys() {
 node_ranger() {
   mkdir -p ~/.config/ranger/plugins
   git clone gh:alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+  source .bashrc
   nvm install --lts
   node -v
 }
@@ -256,9 +257,13 @@ clone_repos() {
   echo "grlib:         $(basename grlib)"
   echo "gr-scripts:    $(basename gr-scripts)"
   cd
-  echo "todo-main:     $(basename .todo)"
-  echo "todo:          $(basename .todo/bin)"
   echo "gr-docs:       $(basename greenroom)"
+}
+
+mount_cargo() {
+  sudo mkdir /mnt/shared
+  sudo chown -R "$USER" /mnt/shared
+  sudo mount -a
 }
 
 load_cargo() {

@@ -27,8 +27,7 @@ if [ "$MODE" == "w" ]; then
 fi
 
 if [ "$MODE" == "w" ]; then
-  heading 'Run amount in a second terminal'
-  continue_prompt 'Did it work?'
+  section mount_cargo 'Mount Shared' 'Did it work? (If not run amount)'
 elif [ "$MODE" == "s" ]; then
   continue_prompt 'Is elephant and dumbledore connected?'
   section load_cargo 'Load Cargo' 'Did you export the nfs?'
@@ -38,7 +37,7 @@ section install_backup 'Setup backup routines'
 
 if [ "$MODE" == "w" ]; then
   section install_todo 'Install Todo'
-  section install_ffsync 'Install Firefoxy Sync'
+  section install_ffsync 'Install Firefox Sync'
 fi
 
 passwd

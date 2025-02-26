@@ -46,3 +46,16 @@ $ glxinfo | g "OpenGL renderer"
 $ cat /var/log/Xorg.0.log | grep -E "NVIDIA"
 $ lsmod | grep nvidia
 $ sudo nvidia-smi
+
+## Howlin
+
+cat /efi/loader/entries/ee96e19319d64dac92a6e1f0b91f61a0-6.13.1-arch2-1.conf 
+# Boot Loader Specification type#1 entry
+# File created by /etc/kernel/install.d/90-loaderentry.install (systemd 254.1-1-arch)
+title      EndeavourOS
+version    6.13.1-arch2-1
+machine-id ee96e19319d64dac92a6e1f0b91f61a0
+sort-key   endeavouros-6.13.1-arch2-1
+options    nvme_load=YES nowatchdog rw root=UUID=6d1f1dc0-c0da-49ca-918c-546bd199565f resume=UUID=6ac12427-0e0b-4a34-a83e-c47faebe8942 systemd.machine_id=ee96e19319d64dac92a6e1f0b91f61a0
+linux      /ee96e19319d64dac92a6e1f0b91f61a0/6.13.1-arch2-1/linux
+initrd     /ee96e19319d64dac92a6e1f0b91f61a0/6.13.1-arch2-1/initrd
