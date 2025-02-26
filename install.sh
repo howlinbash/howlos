@@ -35,6 +35,10 @@ fi
 
 section install_backup 'Setup backup routines'
 
+if [ "$HOSTNAME" == "howlin" ]; then
+  section install_obs 'Install OBS'
+fi
+
 if [ "$MODE" == "w" ]; then
   section install_todo 'Install Todo'
   section install_ffsync 'Install Firefox Sync'

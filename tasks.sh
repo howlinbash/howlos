@@ -281,3 +281,7 @@ install_todo() {
 install_ffsync() {
   ./../../mnt/shared/src/ffsync/install.sh
 }
+
+install_obs() {
+  flatpak install flathub com.obsproject.Studio
+}
